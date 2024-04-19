@@ -1,0 +1,1 @@
+print("Prvý .py file")
