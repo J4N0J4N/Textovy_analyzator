@@ -1,10 +1,6 @@
-"""
-projekt_1.py: první projekt do Engeto Online Python Akademie
-author: Ján Jankovič
-email: jankovic.jan4@gmail.com
-discord: jano_15654 
-"""
-
+'''
+author =
+'''
 TEXTS = ['''
 Situated about 10 miles west of Kemmerer,
 Fossil Butte is a ruggedly impressive
@@ -32,24 +28,3 @@ other freshwater genera and herring similar to those
 in modern oceans. Other fish such as paddlefish,
 garpike and stingray are also present.'''
 ]
-
-zaregistrovani = {
-    "bob" : "123",
-    "ann" : "pass123",
-    "mike" : "password123",
-    "liz" : "pass123"
-}
-
-username = input("username:")
-password = input("password:")
-
-if zaregistrovani.get(username) == password: 
-    print(
-        "-" * 40 + "\n" + "Welcome to the app, " 
-        + username + "\n" + "We have 3 texts to be analyzed." + 
-        "\n" + "-" * 40
-        )
-else:
-    print("unregistered user, terminating the program..")
-
-

@@ -1,2 +1,2 @@
-print('Hello world')
-
+pismena = tuple()
+print(type(pismena))
