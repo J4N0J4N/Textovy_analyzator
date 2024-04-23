@@ -6,7 +6,6 @@ discord: jano_15654
 """
 
 #premenná so zadaným textom
-
 TEXTS = ['''
 Situated about 10 miles west of Kemmerer,
 Fossil Butte is a ruggedly impressive
@@ -36,7 +35,6 @@ garpike and stingray are also present.'''
 ]
 
 #vytvorenie slovníka s registrovanými užívateľmi
-
 zaregistrovani = {
     "bob" : "123",
     "ann" : "pass123",
@@ -45,12 +43,10 @@ zaregistrovani = {
 }
 
 #zadanie mena a hesla užívateľom a uloženie do premenných 
-
 username = input("username:")
 password = input("password:")
 
 #podmienka na vyhodnotenie, či je užívateľ registrovaný alebo nie
-
 if zaregistrovani.get(username) == password: 
     print(
         "-" * 40 + "\n" + "Welcome to the app, " 
@@ -58,10 +54,13 @@ if zaregistrovani.get(username) == password:
         "\n" + "-" * 40
         )
 
+    #nová premenná, do ktorej sa uloží vstup od užívateľa
     cislo_textu = input("Enter a number btw. 1 and 3 to select: ")
 
+    #vnorená podmienka, ktorá vyhodnocuje, či je vstup číslo
     if cislo_textu.isnumeric() is True:
         
+        #ak je vstup číslo, vyhodnocuje sa či je v intervale <1,3>
         if int(cislo_textu) in range(1, 4):
             print("zadal si dobre")
 
