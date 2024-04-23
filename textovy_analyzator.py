@@ -84,6 +84,10 @@ if zaregistrovani.get(username) == password:
             #nájde výskyt slova zloženého z malých písmen
             lower = 0
 
+            number = 0
+
+            soucet = []
+
             for slovo in TEXTS_split:
                 if slovo[0].isupper():
                     capital += 1
@@ -91,8 +95,12 @@ if zaregistrovani.get(username) == password:
                 if slovo.isupper() and slovo.isalpha():
                     upper += 1
 
-                if slovo.islower(): #and slovo.isalpha():
+                if slovo.islower(): #skontrolovať ešte správnosť tejto podmienky(podľa výpisu v zadaní sedí) and slovo.isalpha():
                     lower += 1
+
+                if slovo.isnumeric():
+                    number += 1
+                    soucet.append(int(slovo))
         
 
 
@@ -104,7 +112,9 @@ if zaregistrovani.get(username) == password:
             print("There are " + str(capital) + " titlecase words.")
             print("There are " + str(upper) + " uppercase words.")
             print("There are " + str(lower) + " lowercase words.")
-                
+            print("There are " + str(number) + " numeric strings.")
+            print("The sum of all the numbers " + str(sum(soucet)))
+            
 
         else:
             print("Your number is out of range")
