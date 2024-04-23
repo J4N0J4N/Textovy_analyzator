@@ -5,6 +5,8 @@ email: jankovic.jan4@gmail.com
 discord: jano_15654 
 """
 
+#premenná so zadaným textom
+
 TEXTS = ['''
 Situated about 10 miles west of Kemmerer,
 Fossil Butte is a ruggedly impressive
@@ -33,6 +35,8 @@ in modern oceans. Other fish such as paddlefish,
 garpike and stingray are also present.'''
 ]
 
+#vytvorenie slovníka s registrovanými užívateľmi
+
 zaregistrovani = {
     "bob" : "123",
     "ann" : "pass123",
@@ -40,8 +44,12 @@ zaregistrovani = {
     "liz" : "pass123"
 }
 
+#zadanie mena a hesla užívateľom a uloženie do premenných 
+
 username = input("username:")
 password = input("password:")
+
+#podmienka na vyhodnotenie, či je užívateľ registrovaný alebo nie
 
 if zaregistrovani.get(username) == password: 
     print(
@@ -49,6 +57,19 @@ if zaregistrovani.get(username) == password:
         + username + "\n" + "We have 3 texts to be analyzed." + 
         "\n" + "-" * 40
         )
+
+    cislo_textu = input("Enter a number btw. 1 and 3 to select: ")
+
+    if cislo_textu.isnumeric() is True:
+        
+        if int(cislo_textu) in range(1, 4):
+            print("zadal si dobre")
+
+        else:
+            print("Your number is out of range")
+    
+    else:
+        print("The input must be a number")
 else:
     print("unregistered user, terminating the program..")
 
