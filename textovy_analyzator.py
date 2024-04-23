@@ -22,7 +22,7 @@ beds slope gradually upward from the valley floor
 and steepen abruptly. Overlying them and extending
 to the top of the butte are the much steeper
 buff-to-white beds of the Green River Formation,
-which are about 300 feet thick.''',
+which are about 300 feet thick. ''',
 '''The monument contains 8198 acres and protects
 a portion of the largest deposit of freshwater fish
 fossils in the world. The richest fossil fish deposits
@@ -46,12 +46,14 @@ zaregistrovani = {
 username = input("username:")
 password = input("password:")
 
+ciara = "-" * 40
+
 #podmienka na vyhodnotenie, či je užívateľ registrovaný alebo nie
 if zaregistrovani.get(username) == password: 
     print(
-        "-" * 40 + "\n" + "Welcome to the app, " 
+        ciara + "\n" + "Welcome to the app, " 
         + username + "\n" + "We have 3 texts to be analyzed." + 
-        "\n" + "-" * 40
+        "\n" + ciara
         )
 
     #nová premenná, do ktorej sa uloží vstup od užívateľa
@@ -62,7 +64,47 @@ if zaregistrovani.get(username) == password:
         
         #ak je vstup číslo, vyhodnocuje sa či je v intervale <1,3>
         if int(cislo_textu) in range(1, 4):
-            print("zadal si dobre")
+
+            
+            #rozsplituje string na vybranom indexe listu 
+            TEXTS_split = TEXTS[int(cislo_textu)-1].split()
+
+            #vráti počet slov vo vybranom stringu
+            pocet_slov = len(TEXTS_split)
+
+            #premenná, do ktorej sa pripočítava hodnota, pokiaľ
+            #nájde výskyt veľkého písmena na začiatku slova
+            capital = 0
+
+            #premenná, do ktorej sa pripočítava hodnota, pokiaľ
+            #pokiaľ nájde výskyt slova zloženého z veľkých písmen
+            upper = 0
+
+            #premenná, do ktorej sa pripočítava hodnota, pokiaľ
+            #nájde výskyt slova zloženého z malých písmen
+            lower = 0
+
+            for slovo in TEXTS_split:
+                if slovo[0].isupper():
+                    capital += 1
+                
+                if slovo.isupper() and slovo.isalpha():
+                    upper += 1
+
+                if slovo.islower(): #and slovo.isalpha():
+                    lower += 1
+        
+
+
+            #vyprintuje počty podľa zadania
+            print(
+                ciara + "\n" + "There are " + str(pocet_slov) + 
+                " words in the selected text."
+                )
+            print("There are " + str(capital) + " titlecase words.")
+            print("There are " + str(upper) + " uppercase words.")
+            print("There are " + str(lower) + " lowercase words.")
+                
 
         else:
             print("Your number is out of range")
