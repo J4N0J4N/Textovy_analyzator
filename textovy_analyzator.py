@@ -90,6 +90,9 @@ if zaregistrovani.get(username) == password:
             soucet = []
             cetnost_list = []
 
+            
+                
+
             for slovo in TEXTS_split:
 
                 if slovo[0].isupper():
@@ -106,9 +109,14 @@ if zaregistrovani.get(username) == password:
                     soucet.append(int(slovo)) #popisat podmienku
 
                 ciste_slovo = slovo.replace(".", "").replace(",", "").replace("-", "") #ocistim si slova od znakov, ktore nechcem aby mi zapocitavalo
-                cetnost = str(len(ciste_slovo))   #vytvoril som premennu cetnost
+                cetnost = len(ciste_slovo)   #vytvoril som premennu cetnost
                 cetnost_list.append(cetnost)    #ta sa mi nasledne uklada do listu
-  
+
+                #medzera = max(cetnost_list) + 2
+                max_vyskyt = max(cetnost_list.count(x) for x in range(1, 12))
+                medzera = max_vyskyt + 2
+                #premenna = max(cetnost_list.count(range(1, 12))) + 2
+
 
             #vyprintuje počty podľa zadania
             print(
@@ -122,19 +130,19 @@ if zaregistrovani.get(username) == password:
             print("The sum of all the numbers " + str(sum(soucet)))
 
             #vyprintovanie tabuľky
-            print(ciara, "LEN|" + "OCCURENCES".center(14) + "|NR.", ciara, sep="\n")
+            print(ciara, "LEN|" + "OCCURENCES".center(medzera) + "|NR.", ciara, sep="\n")
             print(
-                "1|".rjust(4) + ((cetnost_list.count("1")) * "*").ljust(14) + "|" + str(cetnost_list.count("1")),
-                "2|".rjust(4) + ((cetnost_list.count("2")) * "*").ljust(14) + "|" + str(cetnost_list.count("2")), 
-                "3|".rjust(4) + ((cetnost_list.count("3")) * "*").ljust(14) + "|" + str(cetnost_list.count("3")),
-                "4|".rjust(4) + ((cetnost_list.count("4")) * "*").ljust(14) + "|" + str(cetnost_list.count("4")), 
-                "5|".rjust(4) + ((cetnost_list.count("5")) * "*").ljust(14) + "|" + str(cetnost_list.count("5")),
-                "6|".rjust(4) + ((cetnost_list.count("6")) * "*").ljust(14) + "|" + str(cetnost_list.count("6")), 
-                "7|".rjust(4) + ((cetnost_list.count("7")) * "*").ljust(14) + "|" + str(cetnost_list.count("7")),
-                "8|".rjust(4) + ((cetnost_list.count("8")) * "*").ljust(14) + "|" + str(cetnost_list.count("8")), 
-                "9|".rjust(4) + ((cetnost_list.count("9")) * "*").ljust(14) + "|" + str(cetnost_list.count("9")),
-                "10|".rjust(4) + ((cetnost_list.count("10")) * "*").ljust(14) + "|" + str(cetnost_list.count("10")), 
-                "11|".rjust(4) + ((cetnost_list.count("11")) * "*").ljust(14) + "|" + str(cetnost_list.count("11")),
+                "1|".rjust(4) + ((cetnost_list.count(1)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(1)),
+                "2|".rjust(4) + ((cetnost_list.count(2)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(2)), 
+                "3|".rjust(4) + ((cetnost_list.count(3)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(3)),
+                "4|".rjust(4) + ((cetnost_list.count(4)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(4)), 
+                "5|".rjust(4) + ((cetnost_list.count(5)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(5)),
+                "6|".rjust(4) + ((cetnost_list.count(6)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(6)), 
+                "7|".rjust(4) + ((cetnost_list.count(7)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(7)),
+                "8|".rjust(4) + ((cetnost_list.count(8)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(8)), 
+                "9|".rjust(4) + ((cetnost_list.count(9)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(9)),
+                "10|".rjust(4) + ((cetnost_list.count(10)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(10)), 
+                "11|".rjust(4) + ((cetnost_list.count(11)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(11)),
                 sep="\n"
                )  
 
