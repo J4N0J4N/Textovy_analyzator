@@ -51,9 +51,8 @@ ciara = "-" * 40
 #podmienka na vyhodnotenie, či je užívateľ registrovaný alebo nie
 if zaregistrovani.get(username) == password: 
     print(
-        ciara + "\n" + "Welcome to the app, " 
-        + username + "\n" + "We have 3 texts to be analyzed." + 
-        "\n" + ciara
+        ciara, "Welcome to the app, " + username, 
+        "We have 3 texts to be analyzed.", ciara, sep="\n"
         )
 
     #nová premenná, do ktorej sa uloží vstup od užívateľa
@@ -65,7 +64,6 @@ if zaregistrovani.get(username) == password:
         #ak je vstup číslo, vyhodnocuje sa či je v intervale <1,3>
         if int(cislo_textu) in range(1, 4):
 
-            
             #rozsplituje string na vybranom indexe listu 
             TEXTS_split = TEXTS[int(cislo_textu)-1].split()
 
@@ -77,21 +75,23 @@ if zaregistrovani.get(username) == password:
             capital = 0
 
             #premenná, do ktorej sa pripočítava hodnota, pokiaľ
-            #pokiaľ nájde výskyt slova zloženého z veľkých písmen
+            #nájde výskyt slova zloženého z veľkých písmen
             upper = 0
 
             #premenná, do ktorej sa pripočítava hodnota, pokiaľ
             #nájde výskyt slova zloženého z malých písmen
             lower = 0
             
-            #popisat obe premenne
+            #premenná, do ktorej sa pripočítava hodnota, pokiaľ
+            #nájde výskyt stringu s číselnou hodnotou
             number = 0
 
+            #list, do ktorého sa pridávajú čísla nájdené v texte
             soucet = []
+
+            #list, do ktorého sa pridáva četnost jednotlivých slov v texte
             cetnost_list = []
 
-            
-                
 
             for slovo in TEXTS_split:
 
@@ -108,26 +108,28 @@ if zaregistrovani.get(username) == password:
                     number += 1
                     soucet.append(int(slovo)) #popisat podmienku
 
-                ciste_slovo = slovo.replace(".", "").replace(",", "").replace("-", "") #ocistim si slova od znakov, ktore nechcem aby mi zapocitavalo
-                cetnost = len(ciste_slovo)   #vytvoril som premennu cetnost
-                cetnost_list.append(cetnost)    #ta sa mi nasledne uklada do listu
+                #očistí slova od znakov, ktoré sa by sa inak započítavali do četnosti
+                #následne pridá jednotlivé hodnoty do listu cetnost_list
+                ciste_slovo = slovo.replace(".", "").replace(",", "").replace("-", "") 
+                cetnost = len(ciste_slovo)   
+                cetnost_list.append(cetnost)    
 
-                #medzera = max(cetnost_list) + 2
+                #šírka stĺpca "occurences" sa prispôsobuje podLa najväčšej hodnoty v liste četnosti 
+                #pripočítavajú sa 2 miesta kvôli tomu aby nebol stĺpec nalepený na "NR."
                 max_vyskyt = max(cetnost_list.count(x) for x in range(1, 12))
                 medzera = max_vyskyt + 2
-                #premenna = max(cetnost_list.count(range(1, 12))) + 2
-
 
             #vyprintuje počty podľa zadania
             print(
-                ciara + "\n" + "There are " + str(pocet_slov) + 
-                " words in the selected text."
+                ciara, 
+                "There are " + str(pocet_slov) + " words in the selected text.",
+                "There are " + str(capital) + " titlecase words.",
+                "There are " + str(upper) + " uppercase words.",
+                "There are " + str(lower) + " lowercase words.",
+                "There are " + str(number) + " numeric strings.",
+                "The sum of all the numbers " + str(sum(soucet)),
+                sep="\n"
                 )
-            print("There are " + str(capital) + " titlecase words.")
-            print("There are " + str(upper) + " uppercase words.")
-            print("There are " + str(lower) + " lowercase words.")
-            print("There are " + str(number) + " numeric strings.")
-            print("The sum of all the numbers " + str(sum(soucet)))
 
             #vyprintovanie tabuľky
             print(ciara, "LEN|" + "OCCURENCES".center(medzera) + "|NR.", ciara, sep="\n")
