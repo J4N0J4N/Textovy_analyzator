@@ -114,10 +114,13 @@ if zaregistrovani.get(username) == password:
                 cetnost = len(ciste_slovo)   
                 cetnost_list.append(cetnost)    
 
+                #vytvorený slovník, do ktorého sa ukladajú dĺžky slov ako kľúče a počty ich výskytov ako hodnoty
+                cetnost_slov = {i: cetnost_list.count(i) for i in range(1, 12)}
+
                 #šírka stĺpca "occurences" sa prispôsobuje podLa najväčšej hodnoty v liste četnosti 
                 #pripočítavajú sa 2 miesta kvôli tomu aby nebol stĺpec nalepený na "NR."
                 max_vyskyt = max(cetnost_list.count(x) for x in range(1, 12))
-                medzera = max_vyskyt + 2
+                medzera = max_vyskyt + 2            
 
             #vyprintuje počty podľa zadania
             print(
@@ -133,20 +136,14 @@ if zaregistrovani.get(username) == password:
 
             #vyprintovanie tabuľky
             print(ciara, "LEN|" + "OCCURENCES".center(medzera) + "|NR.", ciara, sep="\n")
-            print(
-                "1|".rjust(4) + ((cetnost_list.count(1)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(1)),
-                "2|".rjust(4) + ((cetnost_list.count(2)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(2)), 
-                "3|".rjust(4) + ((cetnost_list.count(3)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(3)),
-                "4|".rjust(4) + ((cetnost_list.count(4)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(4)), 
-                "5|".rjust(4) + ((cetnost_list.count(5)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(5)),
-                "6|".rjust(4) + ((cetnost_list.count(6)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(6)), 
-                "7|".rjust(4) + ((cetnost_list.count(7)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(7)),
-                "8|".rjust(4) + ((cetnost_list.count(8)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(8)), 
-                "9|".rjust(4) + ((cetnost_list.count(9)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(9)),
-                "10|".rjust(4) + ((cetnost_list.count(10)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(10)), 
-                "11|".rjust(4) + ((cetnost_list.count(11)) * "*").ljust(medzera) + "|" + str(cetnost_list.count(11)),
-                sep="\n"
-               )  
+            
+            #zjednodušenie pôvodného výpisu tabuľky cez cyklus, po kontrole lektora
+            #for i in range(1,12):
+            #    print(f"{i}|".rjust(4) + (cetnost_list.count(i) * "*").ljust(medzera) + "|" + str(cetnost_list.count(i)))
+
+            #výpis pomocou cyklu, ktorý pracuje s hodnotami uloženými v slovníku cetnost_slov (riešenie po kontrole lektora)
+            for length, count in cetnost_slov.items():
+                print(f"{length}|".rjust(4) + f"{'*' * count}".ljust(medzera) + "|" + str(count))
 
         else:
             print("Your number is out of range")
